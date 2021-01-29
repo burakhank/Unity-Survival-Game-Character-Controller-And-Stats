@@ -1,0 +1,97 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+
+public class PlayerStats : MonoBehaviour
+{
+    [Header("Burakhan Stat System")]
+
+    public PlayerMovement playerMovement;
+    
+    //Health
+    [Header("Health")]
+    public float health;
+    public float maxhealth;
+    [Range(0, 0.4f)]
+    public float healthdownspeed1;
+    [Range(0, 0.4f)]
+    public float healthdownspeed2;
+    public Image healtbar;
+    //public TextMeshProUGUI healthtext;
+
+    //Hunger
+    [Header("Hunger")]
+    public float food;
+    public float maxfood;
+    [Range(0, 0.4f)]
+    public float foodDownspeed1;
+    [Range(0, 0.4f)]
+    public float foodDownspeed2;
+    public Image foodbar;
+
+    //Thirst
+    [Header("Thirst")]
+    public float water;
+    public float maxwater;
+    [Range(0, 0.4f)]
+    public float waterDownspeed1;
+    [Range(0, 0.4f)]
+    public float waterDownspeed2;
+    public Image waterbar;
+    //public TextMeshProUGUI watertext;
+
+
+
+
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        //Yemek Can susuzluk
+        food = food - Random.Range(foodDownspeed1,foodDownspeed2) * playerMovement.speed * Time.deltaTime;
+        water = water - Random.Range(waterDownspeed1, waterDownspeed2) * playerMovement.speed * Time.deltaTime;
+
+        healtbar.fillAmount = health / maxhealth;
+        foodbar.fillAmount = food / maxfood;
+        waterbar.fillAmount = water / maxwater;
+
+        //healthtext.text = "can " + health;
+        //foodtext.text = "Açlık " + food;
+        //watertext.text = "susuzluk " + water;
+
+        livecheck();
+
+        
+    }
+    public void livecheck()
+    {
+        if (health > 100)
+            health = 100;
+
+        if (health <= 0 )
+            gameover();
+
+        if (food > 100)
+            food = 100;
+
+        if (food <= 0)
+            gameover();
+        
+        if (water > 100)
+            water = 100;
+        
+        if (water <= 0)
+            gameover();
+        
+    }
+    public void gameover()
+    {
+        Debug.Log("öldün");
+    }
+}
