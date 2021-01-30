@@ -1,2 +1,2 @@
-bir kısmı internetten yapanlara bakarak yazdığım kod ancak onların bugları vs vardı kendime göre düzenleyip buglarını fixledim.
+bir kısmı internetten yapanlara bakarak yazdığım kod ancak onların bugları vs vardı kendime göre düzenleyip buglarını fixledim.(kendi projemden bir parça)
 NOT: normalde sadece player stat controller yüklemiştim ancak başvuru için az geleceğini düşündüm.
